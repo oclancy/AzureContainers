@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  netcoreapplication:
+    image: netcoreapplication
+    build:
+      context: .
+      dockerfile: NetCoreApplication/Dockerfile
+
+  #expressapplication:
+  #  image: expressapplication
+  #  build:
+  #    context: .
+  #    dockerfile: ExpressApp/Docker/Dockerfile
+
+  consoleapp1:
+    image: ${DOCKER_REGISTRY-}consoleapp1
+    build:
+      context: .
+      dockerfile: ConsoleApp1/Dockerfile
+    links:
+      - "netcoreapplication"
+
+  consoleapp2:
+    image: ${DOCKER_REGISTRY-}consoleapp2
+    build:
+      context: .
+      dockerfile: ConsoleApp2/Dockerfile
+  redis:
+      image: redis:bullseye
+
+      volumes:
+          # Specify an absolute path mapping
+          - .\:/usr/local/etc/redis
+      entrypoint:
+        ["redis-server", "/usr/local/etc/redis/redis.conf"]

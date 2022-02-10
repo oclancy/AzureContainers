@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "None",
+      "composeLaunchServiceName": "consoleapp1",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "netcoreapplication": "StartDebugging",
+        "consoleapp1": "StartDebugging",
+        "consoleapp2": "StartDebugging",
+        "redis": "StartWithoutDebugging"
+      }
+    },
+    "Protobuf": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "None",
+      "composeLaunchServiceName": "consoleapp1",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "consoleapp2": "StartDebugging",
+        "redis": "StartWithoutDebugging",
+        "consoleapp1": "StartDebugging",
+        "netcoreapplication": "DoNotStart"
+      }
+    }
+  }
+}
