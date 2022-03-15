@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore .\**\*.csproj
+      run: dotnet restore ./**/*.csproj
     - name: Build
-      run: dotnet build --no-restore .\AzureContainers.sln
+      run: dotnet build --no-restore AzureContainers.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal .\AzureContainers.sln
+      run: dotnet test --no-build --verbosity normal AzureContainers.sln
 
       
   
