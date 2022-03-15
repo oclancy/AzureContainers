@@ -64,5 +64,6 @@ jobs:
         uses: docker/build-push-action@v2.10.0
         with:
             # Path to the Dockerfile
-            file: ./${{ matrix.project }}/dockerfile
+            file: ${{ matrix.project }}/Dockerfile
+            tags: firmus5oftware/${{matrix.project}}:latest
 
