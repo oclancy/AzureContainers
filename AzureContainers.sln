@@ -13,18 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{C713916A-7660-4B23-8A1B-59FDCD7E3EE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protobuf", "protobuf", "{84AB9CE0-B66B-4C3B-9AA4-3356E348C03D}"
-	ProjectSection(SolutionItems) = preProject
-		message.proto = message.proto
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compiler", "compiler", "{B3E24F16-6DBC-4343-A24E-7CE77988FCEE}"
-	ProjectSection(SolutionItems) = preProject
-		protobuf-3.19.3\bin\protoc.exe = protobuf-3.19.3\bin\protoc.exe
-		protobuf-3.19.3\readme.txt = protobuf-3.19.3\readme.txt
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firmus.Protobuf.Messages", "Firmus.Protobuf.Messages\Firmus.Protobuf.Messages.csproj", "{81FCC6C8-F931-446F-B790-8F60297DA148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firmus.Protobuf.Messages", "Firmus.Protobuf.Messages\Firmus.Protobuf.Messages.csproj", "{81FCC6C8-F931-446F-B790-8F60297DA148}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{166B5A66-7776-4102-9B36-8C3CB0181290}"
 	ProjectSection(SolutionItems) = preProject
@@ -38,17 +27,15 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B1F9767C-E803-4955-B70E-A02CF2C97DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1F9767C-E803-4955-B70E-A02CF2C97DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1F9767C-E803-4955-B70E-A02CF2C97DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1F9767C-E803-4955-B70E-A02CF2C97DAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9FC6751-87B3-4DEF-A979-1B40736E9AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9FC6751-87B3-4DEF-A979-1B40736E9AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9FC6751-87B3-4DEF-A979-1B40736E9AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9FC6751-87B3-4DEF-A979-1B40736E9AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB53638-9BC4-4A7F-8B24-8AFA4576F5EE}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{822CC392-92B6-4552-B6FE-18ECDE85E55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{822CC392-92B6-4552-B6FE-18ECDE85E55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{822CC392-92B6-4552-B6FE-18ECDE85E55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,9 +51,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B3E24F16-6DBC-4343-A24E-7CE77988FCEE} = {84AB9CE0-B66B-4C3B-9AA4-3356E348C03D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4157DDD-0A4B-461D-9B2B-248B4BF8579A}
