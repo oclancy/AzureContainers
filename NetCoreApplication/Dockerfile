@@ -6,6 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+RUN apt-get update && apt install -y protobuf-compiler 
 WORKDIR /src
 COPY ["NetCoreApplication/NetCoreApplication.csproj", "NetCoreApplication/"]
 RUN dotnet restore "NetCoreApplication/NetCoreApplication.csproj"
