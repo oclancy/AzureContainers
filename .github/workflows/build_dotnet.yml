@@ -45,6 +45,11 @@ jobs:
       matrix:
         project: [ConsoleApp1,ConsoleApp2]
     steps:
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+            version: '3.x'
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       
