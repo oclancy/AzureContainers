@@ -61,7 +61,6 @@ jobs:
           password: ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
           # Specifies whether the given registry is ECR (auto, true or false)
           ecr: auto
-          tags: firmus5oftware/${{matrix.project}}:latest
       
       - id: tag
         uses: ASzc/change-string-case-action@v2
@@ -71,6 +70,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v2.10.0
         with:
+            push: true
             # Path to the Dockerfile
             file: ${{ matrix.project }}/Dockerfile
             tags: ${{ steps.tag.outputs.lowercase }}
