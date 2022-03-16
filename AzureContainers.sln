@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{16
 		redis.conf = redis.conf
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firmus.Common", "Firmus.Common\Firmus.Common.csproj", "{88024FF9-F06F-49E3-8EAF-1BC3D3D51FEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{81FCC6C8-F931-446F-B790-8F60297DA148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81FCC6C8-F931-446F-B790-8F60297DA148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81FCC6C8-F931-446F-B790-8F60297DA148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88024FF9-F06F-49E3-8EAF-1BC3D3D51FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88024FF9-F06F-49E3-8EAF-1BC3D3D51FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88024FF9-F06F-49E3-8EAF-1BC3D3D51FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88024FF9-F06F-49E3-8EAF-1BC3D3D51FEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
