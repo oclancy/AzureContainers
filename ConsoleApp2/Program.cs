@@ -2,38 +2,55 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 using ServiceStack.Redis;
+using Serilog;
+using Serilog.Events;
+using Autofac.Extensions.DependencyInjection;
+using Polly;
 
 var redisClientManager = new PooledRedisClientManager("redis:6379");
 
-using IHost host = Host.CreateDefaultBuilder(args)
-                        .ConfigureServices((_, services) => {
-                            services.AddLogging(configure => configure.AddConsole())
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger();
+
+try
+{
+
+    using IHost host = Host.CreateDefaultBuilder(args)
+                        .UseSerilog()
+                        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                        .ConfigureServices((_, services) =>
+                        {
+                            services
                             .AddSingleton<IRedisClientsManager>(redisClientManager)
                             .AddTransient<Subscriber>();
                         })
                         .Build();
 
-using IServiceScope serviceScope = host.Services.CreateScope();
-IServiceProvider provider = serviceScope.ServiceProvider;
+    using IServiceScope serviceScope = host.Services.CreateScope();
+    IServiceProvider provider = serviceScope.ServiceProvider;
 
-var subscriber = provider.GetRequiredService<Subscriber>();
+    var subscriber = provider.GetRequiredService<Subscriber>();
 
-
-
-try
-{
-    subscriber.Subscribe("people");
+    await Policy
+              .Handle<HttpRequestException>()
+              .RetryAsync()
+              .ExecuteAndCaptureAsync(() => {
+                  subscriber.Subscribe("people");
+                  return host.RunAsync();
+              });
+    
 }
 catch (Exception ex)
 {
-    Console.WriteLine(ex.Message);
+    Log.Fatal(ex, "Host terminated unexpectedly");
 }
-
-
-
-
-
-await host.RunAsync();
+finally
+{
+    Log.CloseAndFlush();
+}
