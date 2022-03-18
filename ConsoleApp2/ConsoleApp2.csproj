@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Firmus.Common\Firmus.Common.csproj" />
     <ProjectReference Include="..\Firmus.Protobuf.Messages\Firmus.Protobuf.Messages.csproj" />
   </ItemGroup>
 

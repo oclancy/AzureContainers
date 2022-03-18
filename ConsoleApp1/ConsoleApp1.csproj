@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApp2\ConsoleApp2.csproj" />
+    <ProjectReference Include="..\Firmus.Common\Firmus.Common.csproj" />
   </ItemGroup>
 
 </Project>
