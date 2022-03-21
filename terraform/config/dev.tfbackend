@@ -1,0 +1,3 @@
+bucket = var.backend.bucket
+key    = var.backend.key
+region = var.region
