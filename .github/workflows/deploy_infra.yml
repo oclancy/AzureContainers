@@ -3,9 +3,10 @@ on:
   repository_dispatch 
 
 jobs:
-  environment: dev
+  
   terraform:
     name: 'Terraform'
+    environment: dev
     runs-on: ubuntu-latest
     steps:
 
