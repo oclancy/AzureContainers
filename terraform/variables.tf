@@ -4,13 +4,14 @@ variable "region" {
 }
 
 variable "account_id" {
-  type    = string
+  type = string
+  default=""
 }
 
 variable "backend" {
   type = object({
     bucket = string
-    key      = string
+    key    = string
 
   })
 }
