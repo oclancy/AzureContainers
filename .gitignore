@@ -10,3 +10,5 @@
 /ExpressApp/node_modules
 /protobuf-3.19.3
 /Message.cs
+terraform/.terraform.lock.hcl
+terraform/.terraform/*
