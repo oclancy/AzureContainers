@@ -8,10 +8,10 @@ variable "account_id" {
   default=""
 }
 
-variable "backend" {
-  type = object({
-    bucket = string
-    key    = string
+# variable "backend" {
+#   type = object({
+#     bucket = string
+#     key    = string
 
-  })
+#   })
 }

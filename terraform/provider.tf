@@ -6,7 +6,10 @@ terraform {
     }
   }
 
-  backend "s3" {}
+  backend "s3" {
+    encrypt        = true
+    #dynamodb_table = "terraform-lock"
+  }
 
   required_version = ">= 0.14.9"
 }
