@@ -1,0 +1,3 @@
+bucket = "firmus-dev"
+key    = "tfstate"
+region = "eu-west-2"
