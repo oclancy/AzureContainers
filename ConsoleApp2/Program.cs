@@ -1,15 +1,16 @@
-﻿using Firmus.Protobuf.Messages;
+﻿
+using Autofac.Extensions.DependencyInjection;
+
+using Firmus.Common;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
-using ServiceStack.Redis;
 using Serilog;
 using Serilog.Events;
-using Autofac.Extensions.DependencyInjection;
-using Polly;
 
-var redisClientManager = new PooledRedisClientManager("redis:6379");
+using ServiceStack.Redis;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -24,27 +25,23 @@ try
     using IHost host = Host.CreateDefaultBuilder(args)
                         .UseSerilog()
                         .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                        .ConfigureServices((_, services) =>
+                        .ConfigureServices((context, services) =>
                         {
+                            var configurationRoot = context.Configuration;
+
                             services
-                            .AddSingleton<IRedisClientsManager>(redisClientManager)
-                            .AddTransient<Subscriber>();
+                            .AddSingleton<IRedisClientsManager, PooledRedisClientManager>( (sp) =>
+                            {
+                                var options = sp.GetService<IOptions<RedisOptions>>()!.Value;
+                                return new ($"{options.IpAddress}:{options.Port}");
+                            })
+                            .Configure<RedisOptions>(
+                                configurationRoot.GetSection(nameof(RedisOptions)))
+                            .AddHostedService<Subscriber>();
                         })
                         .Build();
 
-    using IServiceScope serviceScope = host.Services.CreateScope();
-    IServiceProvider provider = serviceScope.ServiceProvider;
-
-    var subscriber = provider.GetRequiredService<Subscriber>();
-
-    await Policy
-              .Handle<HttpRequestException>()
-              .RetryAsync()
-              .ExecuteAndCaptureAsync(() => {
-                  subscriber.Subscribe("people");
-                  return host.RunAsync();
-              });
-    
+    host.Run();
 }
 catch (Exception ex)
 {
