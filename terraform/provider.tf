@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    encrypt        = true
+    encrypt = true
     #dynamodb_table = "terraform-lock"
   }
 
