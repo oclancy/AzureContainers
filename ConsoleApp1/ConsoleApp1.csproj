@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\AzureContainers</DockerfileContext>
+    <DockerfileContext></DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp2\ConsoleApp2.csproj" />
     <ProjectReference Include="..\Firmus.Common\Firmus.Common.csproj" />
   </ItemGroup>
 

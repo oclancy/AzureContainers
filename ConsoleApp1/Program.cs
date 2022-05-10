@@ -35,6 +35,7 @@ try
                             .AddSingleton<IRedisClientsManager, PooledRedisClientManager>((sp) =>
                             {
                                 var options = sp.GetService<IOptions<RedisOptions>>().Value;
+                                Log.Information(options.ToString());
                                 return new($"{options.IpAddress}:{options.Port}");
                             })
                             .Configure<RedisOptions>(
