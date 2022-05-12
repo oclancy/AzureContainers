@@ -13,3 +13,4 @@
 terraform/.terraform.lock.hcl
 terraform/.terraform/*
 terraform/out.plan
+terraform-provision/out.plan
